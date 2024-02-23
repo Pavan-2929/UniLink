@@ -12,9 +12,14 @@ const Register = () => {
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({});
 
-  const handleChange = (e) => {
+const handleChange = (e) => {
+  if (e.target.type === "radio") {
+    setFormData({ ...formData, userType: e.target.value });
+  } else {
     setFormData({ ...formData, [e.target.id]: e.target.value });
-  };
+  }
+};
+
 
   const handleSubmitRegister = async (e) => {
     e.preventDefault();
@@ -58,7 +63,7 @@ const Register = () => {
   };
 
   return (
-    <div className="flex justify-around items-center mt-14">
+    <div className="flex justify-around items-center mt-6">
       <div className="hidden lg:flex">
         <img
           src={authImage}
@@ -121,12 +126,46 @@ const Register = () => {
             className="w-full p-2 border border-gray-300 text-gray-800 focus:outline-none focus:border-blue-500 rounded-sm"
           />
         </div>
+        <div>
+          <label className="text-gray-800 block mb-2">User Type:</label>
+          <div className="flex items-center">
+            <div className="flex items-center mr-6">
+              <input
+                type="radio"
+                id="instructor"
+                name="userType"
+                value="instructor"
+                onChange={handleChange}
+                className="mr-2 cursor-pointer"
+              />
+              <label
+                htmlFor="instructor"
+                className="text-gray-800 cursor-pointer"
+              >
+                Instructor
+              </label>
+            </div>
+            <div className="flex items-center">
+              <input
+                type="radio"
+                id="student"
+                name="userType"
+                value="student"
+                onChange={handleChange}
+                className="mr-2 cursor-pointer"
+              />
+              <label htmlFor="student" className="text-gray-800 cursor-pointer">
+                Student
+              </label>
+            </div>
+          </div>
+        </div>
 
         <div className="block sm:flex justify-between items-center">
           <div>
             <button
               type="submit"
-              className="bg-blue-500 text-white p-2 mt-5 hover:bg-blue-700 rounded focus:outline-none mr-10"
+              className="bg-blue-500 text-white p-2 mt-2 hover:bg-blue-700 rounded focus:outline-none mr-10"
             >
               Register Now
             </button>
@@ -138,7 +177,7 @@ const Register = () => {
             </div>
             <NavLink
               to="/login"
-              className="text-blue-500 p-2 mt-5 underline rounded ml-2 focus:outline-none"
+              className="text-blue-500 p-2 mt-2 underline rounded ml-2 focus:outline-none"
             >
               Login
             </NavLink>

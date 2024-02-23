@@ -3,14 +3,14 @@ import errorHandler from "../utils/error.js";
 
 export const register = async (req, res, next) => {
   try {
-    const { username, email, password, confirmPassword } = req.body;
+    const { username, email, password, confirmPassword, userType } = req.body;
 
     const isUserExist = await User.findOne({email})
     if(isUserExist){
       return next(errorHandler(400, "User already exist"))
     }
 
-    if (!username || !email || !password || !confirmPassword) {
+    if (!username || !email || !password || !confirmPassword || !userType) {
       return next(errorHandler(400, "Enter all details"));
     }
 
@@ -18,7 +18,7 @@ export const register = async (req, res, next) => {
       return next(errorHandler(400, "Enter same password"));
     }
 
-    const newUser = await User.create({ username, email, password });
+    const newUser = await User.create({ username, email, password, userType });
     const token = await newUser.generateToken();
     const expiryTime = new Date(Date.now() + 24 * 60 * 60 * 1000);
 

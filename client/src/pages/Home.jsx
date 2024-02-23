@@ -35,6 +35,9 @@ const Home = () => {
           <h1 className="text-3xl font-semibold mb-4">
             Hello, {userData.username}!
           </h1>
+          <h2 className="text-xl font-semibold mb-4">
+            Type: {userData.userType}
+          </h2>
           <p className="text-lg">
             Welcome back to our awesome platform. Explore and enjoy your time!
           </p>
