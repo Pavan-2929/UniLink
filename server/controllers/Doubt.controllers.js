@@ -1,4 +1,4 @@
-import Doubt from "../models/Doubt.model.js";
+import Doubt from "../models/doubt.model.js";
 import errorHandler from "../utils/error.js";
 
 export const getDoubts = async (req, res, next) => {

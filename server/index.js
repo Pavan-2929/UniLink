@@ -6,6 +6,7 @@ import authRouter from "./routes/auth.routes.js";
 import userRotuer from "./routes/user.routes.js";
 import materialRouter from "./routes/material.routes.js";
 import doubtRouter from "./routes/Doubt.routes.js";
+import commentRouter from "./routes/comment.routes.js";
 
 const app = express();
 app.use(cors({credentials: true, origin:"http://localhost:5173"}))
@@ -29,6 +30,7 @@ app.use('/api/auth', authRouter)
 app.use('/api', userRotuer)
 app.use('/api/material', materialRouter)
 app.use('/api/doubt', doubtRouter)
+app.use('/api/comment', commentRouter)
 
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
