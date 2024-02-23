@@ -17,9 +17,12 @@ const Home = () => {
 
   const getUserData = async () => {
     try {
-      const user = await axios.get("http://localhost:3000/api/user", {
-        withCredentials: true,
-      });
+      const user = await axios.get(
+        "https://unilink-server-29.onrender.com/api/user",
+        {
+          withCredentials: true,
+        }
+      );
       dispatch(setUser(user.data));
       setUserData(user.data);
     } catch (error) {
@@ -38,7 +41,7 @@ const Home = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/material/create",
+        "https://unilink-server-29.onrender.com/api/material/create",
         formData
       );
 
@@ -53,7 +56,7 @@ const Home = () => {
   const fetchMaterials = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:3000/api/material/get"
+        "https://unilink-server-29.onrender.com/api/material/get"
       );
 
       setMaterialData(response.data);

@@ -25,7 +25,7 @@ const handleChange = (e) => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/auth/register",
+        "https://unilink-server-29.onrender.com/api/auth/register",
         formData,
         { withCredentials: true }
       );

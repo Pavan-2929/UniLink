@@ -16,7 +16,9 @@ const MaterialCard = ({ materialsData, fetchMaterials }) => {
 
   const deleteMaterial = async (id) => {
     try {
-      await axios.delete(`http://localhost:3000/api/material/delete/${id}`);
+      await axios.delete(
+        `https://unilink-server-29.onrender.com/api/material/delete/${id}`
+      );
       fetchMaterials();
     } catch (error) {
       console.log(error);
@@ -26,7 +28,7 @@ const MaterialCard = ({ materialsData, fetchMaterials }) => {
   const fetchOneMaterial = async (id) => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/api/material/get/${id}`
+        `https://unilink-server-29.onrender.com/api/material/get/${id}`
       );
       setFormData(response.data);
     } catch (error) {
@@ -45,7 +47,7 @@ const MaterialCard = ({ materialsData, fetchMaterials }) => {
   const updateMaterial = async (id) => {
     try {
       await axios.put(
-        `http://localhost:3000/api/material/update/${id}`,
+        `https://unilink-server-29.onrender.com/api/material/update/${id}`,
         formData
       );
       toggleModal();
