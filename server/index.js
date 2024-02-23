@@ -4,6 +4,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import authRouter from "./routes/auth.routes.js";
 import userRotuer from "./routes/user.routes.js";
+import materialRouter from "./routes/material.routes.js";
 
 const app = express();
 app.use(cors({credentials: true, origin:"http://localhost:5173"}))
@@ -25,6 +26,7 @@ mongoose
 
 app.use('/api/auth', authRouter)  
 app.use('/api', userRotuer)
+app.use('/api/material', materialRouter)
 
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;

@@ -77,7 +77,7 @@ function Header() {
 
         <div>
           <ul
-            className={`text-[1.3rem] md:flex ${
+            className={`text-[1.5rem] font-semibold md:flex ${
               isMenuOpen ? "block" : "hidden"
             } space-y-8 md:space-y-0 items-center flex flex-col md:flex-row justify-center `}
           >
@@ -102,7 +102,7 @@ function Header() {
                           FormData.profilePicture || currentUser.profilePicture
                         }
                         alt="Profile"
-                        className="h-8 w-8 rounded-full"
+                        className="h-12 w-12 rounded-full"
                       />
                     )}
                   </NavLink>

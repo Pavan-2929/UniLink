@@ -3,6 +3,7 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../redux/auth/authSlice";
 import { NavLink } from "react-router-dom";
+import MaterialCard from "../components/MaterialCard";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -29,7 +30,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="container mx-auto mt-10 p-4 text-center">
+    <div className="container mx-auto mt-5 p-4 text-center">
       {isLoggedIn ? (
         <div className="bg-gray-200 p-6 rounded-lg shadow-lg">
           <h1 className="text-3xl font-semibold mb-4">
@@ -66,6 +67,13 @@ const Home = () => {
           </div>
         </div>
       )}
+
+      <div className="mt-8 bg-gray-200 rounded-lg shadow-lg">
+        <h1 className="text-2xl font-semibold pt-4">
+          Find the Material for Your Curriculum
+        </h1>
+        <MaterialCard />
+      </div>
     </div>
   );
 };
