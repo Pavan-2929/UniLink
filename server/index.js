@@ -9,7 +9,9 @@ import doubtRouter from "./routes/Doubt.routes.js";
 import commentRouter from "./routes/comment.routes.js";
 
 const app = express();
-app.use(cors({credentials: true, origin:"http://localhost:5173"}))
+app.use(
+  cors({ credentials: true, origin: "https://unilink-292929.onrender.com" })
+);
 app.use(express.json())
 dotenv.config();
 
