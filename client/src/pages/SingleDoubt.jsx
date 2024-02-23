@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Comments from "../components/Comments";
+import toast from "react-hot-toast";
 
 const SingleDoubt = () => {
   const { id } = useParams();
@@ -50,8 +51,10 @@ const SingleDoubt = () => {
       );
       fetchComments();
       setContent("");
+      toast.success("comment added")
     } catch (error) {
       console.log(error);
+      toast.error("Something went wrong")
     }
   };
 

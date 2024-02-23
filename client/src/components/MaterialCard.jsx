@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { FaTimes } from "react-icons/fa";
 import { useSelector } from "react-redux";
+import toast from "react-hot-toast";
 
 const MaterialCard = ({ materialsData, fetchMaterials }) => {
   const [formData, setFormData] = useState({
@@ -20,8 +21,10 @@ const MaterialCard = ({ materialsData, fetchMaterials }) => {
         `https://unilink-server-29.onrender.com/api/material/delete/${id}`
       );
       fetchMaterials();
+      toast.success("material deleted");
     } catch (error) {
       console.log(error);
+      toast.error("Something went wrong");
     }
   };
 
@@ -52,8 +55,10 @@ const MaterialCard = ({ materialsData, fetchMaterials }) => {
       );
       toggleModal();
       fetchMaterials();
+      toast.success("Material updated")
     } catch (error) {
       console.log(error);
+      toast.error("Something went wrong");
     }
   };
 

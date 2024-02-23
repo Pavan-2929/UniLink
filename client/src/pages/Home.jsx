@@ -5,6 +5,7 @@ import { setUser } from "../redux/auth/authSlice";
 import { NavLink } from "react-router-dom";
 import MaterialCard from "../components/MaterialCard";
 import { FaTimes } from "react-icons/fa";
+import toast from "react-hot-toast";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -49,8 +50,10 @@ const Home = () => {
       console.log(response);
       fetchMaterials();
       setShowModal(!showModal);
+      toast.success("Material Added successfully")
     } catch (error) {
       console.log(error);
+      toast.error("Something went wrong");
     }
   };
 

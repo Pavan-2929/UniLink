@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { FaTrash } from "react-icons/fa";
 import { useSelector } from "react-redux";
+import toast from "react-hot-toast";
 
 const Comments = ({ comment, fetchComments }) => {
   const [commentUser, setCommentUser] = useState({});
@@ -24,8 +25,10 @@ const Comments = ({ comment, fetchComments }) => {
         `https://unilink-server-29.onrender.com/api/comment/delete/${id}`
       );
       fetchComments();
+      toast.success("comment deleted");
     } catch (error) {
       console.log(error);
+      toast.error("Something went wrong");
     }
   };
 

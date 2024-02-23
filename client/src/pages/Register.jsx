@@ -33,32 +33,14 @@ const handleChange = (e) => {
       if (response.status === 200) {
         dispatch(login());
         navigate("/");
-        toast.success("Registration Successful", {
-          style: {
-            borderRadius: "10px",
-            background: "#10B981",
-            color: "#ffffff",
-          },
-        });
+        toast.success("Registration Successful");
       } else {
-        toast.error("Something went wrong", {
-          style: {
-            borderRadius: "10px",
-            background: "#EF4444",
-            color: "#ffffff",
-          },
-        });
+        toast.error("Something went wrong");
         console.log(`Unexpected status code: ${response.status}`);
       }
     } catch (error) {
       console.error("Registration failed:", error);
-      toast.error(`${error.response.data.message}`, {
-        style: {
-          borderRadius: "10px",
-          background: "#EF4444",
-          color: "#ffffff",
-        },
-      });
+      toast.error(`${error.response.data.message}`);
     }
   };
 

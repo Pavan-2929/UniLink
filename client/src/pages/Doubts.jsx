@@ -3,6 +3,7 @@ import axios from "axios";
 import { NavLink } from "react-router-dom";
 import { FaTimes } from "react-icons/fa";
 import { useSelector } from "react-redux";
+import toast from 'react-hot-toast'
 
 const Doubts = () => {
   const currentUser = useSelector((state) => state.currentUser);
@@ -49,11 +50,12 @@ const Doubts = () => {
         { withCredentials: true }
       );
       fetchDoubtsData();
-
+        toast.success("Doubt added successfully")
       console.log(response);
       toggleModal();
     } catch (error) {
       console.log(error);
+      toast.error("Something went wrong")
     }
   };
 
@@ -65,8 +67,10 @@ const Doubts = () => {
       );
       console.log(response);
       fetchDoubtsData();
+      toast.success("doubt deleted successfully")
     } catch (error) {
       console.log(error);
+      toast.error("Something went wrong")
     }
   };
 

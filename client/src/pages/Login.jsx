@@ -30,22 +30,9 @@ const Login = () => {
       if (response.status === 200) {
         dispatch(login());
         navigate("/");
-        toast.success("Logged in Successfully", {
-          style: {
-            borderRadius: "10px",
-            background: "#4CAF50",
-            color: "#fff",
-          },
-        });
+        toast.success("Logged in Successfully");
       } else {
-        toast.error("Enter valid Information", {
-          style: {
-            borderRadius: "10px",
-            background: "#F44336",
-            color: "#fff",
-          },
-        });
-        console.log(`Unexpected status code: ${response.status}`);
+        toast.error("Enter valid Information");
       }
     } catch (error) {
       console.log(error);

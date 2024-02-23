@@ -44,31 +44,13 @@ const Profile = () => {
       );
       if (response.status === 200) {
         dispatch(setUser(formData));
-        toast.success("Profile updated Successfully", {
-          style: {
-            borderRadius: "10px",
-            background: "#48BB78",
-            color: "#fff",
-          },
-        });
+        toast.success("Profile updated Successfully");
       } else {
-        toast.error("Something went wrong", {
-          style: {
-            borderRadius: "10px",
-            background: "#F56565",
-            color: "#fff",
-          },
-        });
+        toast.error("Something went wrong");
         console.log(`Unexpected status code: ${response.status}`);
       }
     } catch (error) {
-      toast.error(`${error.response.data.message}`, {
-        style: {
-          borderRadius: "10px",
-          background: "#F56565",
-          color: "#fff",
-        },
-      });
+      toast.error(`${error.response.data.message}`);
       console.log(error);
     }
   };
@@ -116,31 +98,13 @@ const Profile = () => {
         dispatch(logout());
         dispatch(setUser(null));
         navigate("/login");
-        toast.success("Logout Successfully", {
-          style: {
-            borderRadius: "10px",
-            background: "#48BB78",
-            color: "#fff",
-          },
-        });
+        toast.success("Logout Successfully");
       } else {
-        toast.error("Something went wrong", {
-          style: {
-            borderRadius: "10px",
-            background: "#F56565",
-            color: "#fff",
-          },
-        });
+        toast.error("Something went wrong");
         console.log(`Unexpected status code: ${response.status}`);
       }
     } catch (error) {
-      toast.error(`${error}`, {
-        style: {
-          borderRadius: "10px",
-          background: "#F56565",
-          color: "#fff",
-        },
-      });
+      toast.error(`${error}`);
       console.log(error);
     }
   };
@@ -157,31 +121,13 @@ const Profile = () => {
       if (response.status === 200) {
         navigate("/login");
         dispatch(logout());
-        toast.success("User deleted Successfully", {
-          style: {
-            borderRadius: "10px",
-            background: "#48BB78",
-            color: "#fff",
-          },
-        });
+        toast.success("User deleted Successfully");
       } else {
-        toast.error("Something went wrong", {
-          style: {
-            borderRadius: "10px",
-            background: "#F56565",
-            color: "#fff",
-          },
-        });
+        toast.error("Something went wrong");
         console.log(`Unexpected status code: ${response.status}`);
       }
     } catch (error) {
-      toast.error(`${error}`, {
-        style: {
-          borderRadius: "10px",
-          background: "#F56565",
-          color: "#fff",
-        },
-      });
+      toast.error(`${error}`);
     }
   };
 
