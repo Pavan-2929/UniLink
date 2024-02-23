@@ -42,9 +42,9 @@ const Doubts = () => {
         formData,
         { withCredentials: true }
       );
+      fetchDoubtsData();
 
       console.log(response);
-      fetchDoubtsData();
       toggleModal();
     } catch (error) {
       console.log(error);
@@ -57,7 +57,7 @@ const Doubts = () => {
         `http://localhost:3000/api/doubt/delete/${id}`,
         { withCredentials: true }
       );
-console.log(response);
+      console.log(response);
       fetchDoubtsData();
     } catch (error) {
       console.log(error);
@@ -65,10 +65,15 @@ console.log(response);
   };
 
   return (
-    <div className="container mx-auto md:px-14">
+    <div className="container mx-auto md:px-14 mb-10">
       <h1 className="text-3xl font-bold mb-4 text-center my-6">Doubts</h1>
-      <div>
-        <button onClick={toggleModal}>Add Doubt</button>
+      <div className="flex justify-center my-6">
+        <button
+          onClick={toggleModal}
+          className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-lg transition duration-300"
+        >
+          Add Doubt
+        </button>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {doubtData.map((doubt, index) => (
@@ -103,7 +108,7 @@ console.log(response);
         ))}
         {showModal && (
           <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 z-50">
-            <div className="bg-white p-6 md:p-10 rounded-lg shadow-lg md:w-[50vw] w-full">
+            <div className="bg-gray-200 p-6 md:p-10 rounded-lg shadow-lg md:w-[50vw] w-full">
               <div className="flex justify-between items-center mb-6">
                 <h2 className="text-2xl md:text-3xl font-semibold">
                   Update Material

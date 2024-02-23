@@ -19,9 +19,19 @@ export const getComments = async (req, res, next) => {
     const doubtId = req.params.id;
 
     const comment = await Comment.find({doubtId});
-    // console.log(comment);
+
     res.status(200).json(comment);
   } catch (error) {
     next(error);
   }
 };
+
+export const deleteComments = async (req, res, next) => {
+    try {
+        const deletedComment = await Comment.findByIdAndDelete(req.params.id)
+
+        res.status(200).json(deletedComment);
+    } catch (error) {
+        next(error)
+    }
+}

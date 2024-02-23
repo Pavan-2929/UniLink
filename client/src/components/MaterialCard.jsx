@@ -67,7 +67,7 @@ const MaterialCard = ({ materialsData, fetchMaterials }) => {
             <div className="flex justify-between items-center font-bold">
               {currentUser && currentUser.userType === "instructor" ? (
                 <>
-                  <div className="flex justify-between w-full space-x-4 font-bold">
+                  <div className="flex justify-between items-center w-full space-x-4 font-bold">
                     <a
                       href={material.materialURL}
                       className="bg-blue-300 text-blue-700 rounded-full py-1 px-3 mr-2 mb-2"

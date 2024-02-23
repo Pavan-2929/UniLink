@@ -1,5 +1,5 @@
 import express from 'express'
-import { createDoubt, deleteDoubt, getDoubtById, getDoubts } from '../controllers/doubt.controllers.js'
+import { createDoubt, deleteDoubt, getDoubtById, getDoubts } from '../controllers/Doubt.controllers.js'
 import verifyToken from '../middlewares/verifyToken.js'
 
 const router = express.Router()

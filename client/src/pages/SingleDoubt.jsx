@@ -82,7 +82,7 @@ const SingleDoubt = () => {
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <div className="bg-white shadow-md rounded-lg overflow-hidden">
+        <div className="bg-gray-200 shadow-md rounded-lg overflow-hidden">
           <img
             src={doubtData.image}
             alt={doubtData.title}
@@ -109,7 +109,7 @@ const SingleDoubt = () => {
             <ul>
               {comments &&
                 comments.map((comment) => (
-                  <Comments key={comment._id} comment={comment} />
+                  <Comments key={comment._id} comment={comment} fetchComments={fetchComments}/>
                 ))}
             </ul>
 

@@ -6,7 +6,6 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { logout, setUser } from "../redux/auth/authSlice";
 import { useNavigate } from "react-router-dom";
-import toast from "react-hot-toast";
 
 function Header() {
   const dispatch = useDispatch();
@@ -24,52 +23,11 @@ function Header() {
     setIsMenuOpen(false);
   };
 
-  const handleLogout = async () => {
-    setIsMenuOpen(false);
-    try {
-      const response = await axios.get(
-        "http://localhost:3000/api/auth/logout",
-        { withCredentials: true }
-      );
-
-      if (response.status === 200) {
-        dispatch(logout());
-        dispatch(setUser(null));
-        navigate("/login");
-        toast.success("Logout Successfully", {
-          style: {
-            borderRadius: "10px",
-            background: "#282828",
-            color: "#fff",
-          },
-        });
-      } else {
-        toast.error("Something went wrong", {
-          style: {
-            borderRadius: "10px",
-            background: "#282828",
-            color: "#fff",
-          },
-        });
-        console.log(`Unexpected status code: ${response.status}`);
-      }
-    } catch (error) {
-      toast.error(`${error}`, {
-        style: {
-          borderRadius: "10px",
-          background: "#282828",
-          color: "#fff",
-        },
-      });
-      console.log(error);
-    }
-  };
-
   return (
     <nav className={`bg-gray-200 p-4 font-semibold`}>
       <div className="md:flex justify-around items-center">
         <div className="text-[2rem] flex justify-around items-center relative">
-          <span className="text-red-500 animate-fire">Auth</span>
+          <span className="text-red-500 animate-fire">UniLink</span>
           <div onClick={toggleMenu} className="md:hidden">
             {isMenuOpen ? <FaTimes /> : <FaBars />}
           </div>
@@ -90,8 +48,8 @@ function Header() {
             {isLoggedIn ? (
               <>
                 <li className="md:ml-5 xl:mx-5 hover:text-red-600">
-                  <NavLink to="/login" onClick={handleLogout}>
-                    Logout
+                  <NavLink to="/doubts">
+                    Doubts
                   </NavLink>
                 </li>
                 <li className="md:ml-5 xl:mx-5 hover:text-red-600">
