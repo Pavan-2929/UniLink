@@ -14,6 +14,7 @@ const Home = () => {
   const [userData, setUserData] = useState({});
   const [formData, setFormData] = useState({});
   const [materialsData, setMaterialData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const getUserData = async () => {
     try {
@@ -46,7 +47,7 @@ const Home = () => {
       );
 
       console.log(response);
-      fetchMaterials()
+      fetchMaterials();
       setShowModal(!showModal);
     } catch (error) {
       console.log(error);
@@ -55,13 +56,16 @@ const Home = () => {
 
   const fetchMaterials = async () => {
     try {
+      setIsLoading(true);
       const response = await axios.get(
         "https://unilink-server-29.onrender.com/api/material/get"
       );
 
       setMaterialData(response.data);
+      setIsLoading(false);
     } catch (error) {
       console.log(error);
+      setIsLoading(false);
     }
   };
 
@@ -125,7 +129,17 @@ const Home = () => {
             </button>
           </div>
         )}
-        {materialsData && <MaterialCard materialsData={materialsData} fetchMaterials={fetchMaterials}/>}
+
+        {isLoading ? (
+          <div className="text-center text-3xl my-10">Loading...</div>
+        ) : (
+          materialsData && (
+            <MaterialCard
+              materialsData={materialsData}
+              fetchMaterials={fetchMaterials}
+            />
+          )
+        )}
       </div>
 
       {showModal && (

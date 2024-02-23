@@ -80,7 +80,7 @@ const SingleDoubt = () => {
   return (
     <div className="container mx-auto md:px-14 py-8">
       {loading ? (
-        <p>Loading...</p>
+        <div className="text-center text-3xl my-10">Loading...</div>
       ) : (
         <div className="bg-gray-200 shadow-md rounded-lg overflow-hidden">
           <img
@@ -109,7 +109,11 @@ const SingleDoubt = () => {
             <ul>
               {comments &&
                 comments.map((comment) => (
-                  <Comments key={comment._id} comment={comment} fetchComments={fetchComments}/>
+                  <Comments
+                    key={comment._id}
+                    comment={comment}
+                    fetchComments={fetchComments}
+                  />
                 ))}
             </ul>
 
