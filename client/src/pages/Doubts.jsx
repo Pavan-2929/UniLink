@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { NavLink } from "react-router-dom";
 import { FaTimes } from "react-icons/fa";
+import { useSelector } from "react-redux";
 
 const Doubts = () => {
+  const currentUser = useSelector((state) => state.currentUser);
   const [doubtData, setDoubtData] = useState([]);
-  const [showModal, setShowModal] = useState(false)
+  const [showModal, setShowModal] = useState(false);
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -25,25 +27,42 @@ const Doubts = () => {
   };
 
   const toggleModal = () => {
-    setShowModal(!showModal)
-  }
+    setShowModal(!showModal);
+  };
 
   useEffect(() => {
     fetchDoubtsData();
   }, []);
 
   const createNewDoubt = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3000/api/doubt/create", formData, {withCredentials: true})
+      const response = await axios.post(
+        "http://localhost:3000/api/doubt/create",
+        formData,
+        { withCredentials: true }
+      );
 
       console.log(response);
-      fetchDoubtsData()
-      toggleModal()
+      fetchDoubtsData();
+      toggleModal();
     } catch (error) {
       console.log(error);
     }
-  }
+  };
+
+  const deleteDoubt = async (id) => {
+    try {
+      const response = await axios.delete(
+        `http://localhost:3000/api/doubt/delete/${id}`,
+        { withCredentials: true }
+      );
+console.log(response);
+      fetchDoubtsData();
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className="container mx-auto md:px-14">
@@ -67,10 +86,18 @@ const Doubts = () => {
               <p className="text-gray-600 mb-4">{doubt.description}</p>
               <NavLink
                 to={`/doubts/${doubt._id}`}
-                className="inline-block px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                className="inline-block px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 mr-5"
               >
                 Explore
               </NavLink>
+              {currentUser && currentUser._id === doubt.userId && (
+                <button
+                  onClick={() => deleteDoubt(doubt._id)}
+                  className="inline-block px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+                >
+                  Delete
+                </button>
+              )}
             </div>
           </div>
         ))}
